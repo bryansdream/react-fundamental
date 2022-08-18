@@ -6,8 +6,9 @@ import Hero from "./hero.layouts"
 const MainLayouts = ({ children }) => {
     return(
         <React.Fragment>
-            <div>
+            <div className="bg-dark min-vh-100">
             <Navigation />
+            < Hero />
             {children}
             </div>
         </React.Fragment>

@@ -50,7 +50,7 @@ const Collection = () => {
               <img
                 className="d-block w-100"
                 src={data.url}
-                alt="First slide"
+                alt={data.title}
                 height={450}
                 width={450}
               />

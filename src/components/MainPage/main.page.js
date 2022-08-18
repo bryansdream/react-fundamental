@@ -1,9 +1,15 @@
+import { Button } from 'react-bootstrap'
 import React from 'react'
+import { Container } from 'react-bootstrap'
 
 const MainPage = () => {
   return (
     <div>
-        <h1>INI MAIN PAGE</h1>
+      <Container>
+        <div className="d-flex justify-content-center align-items-center mt-2">
+          <Button variant="dark">See Community</Button>
+        </div>
+      </Container>
     </div>
   )
 }

@@ -6,24 +6,26 @@ import Albums from "./components/Albums/main.album";
 import Posts from "./components/Posts/main.post"
 import MainPage from "./components/MainPage/main.page";
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Routes,
   Route,
 } from "react-router-dom";
 import "./index.css"
+import Navigation from "./components/Layouts/navigation.layouts";
 
 
 const App = () => {
   return (
-      <MainLayouts>
-          <Router>
-            <Routes>
-              <Route path="/" element={<MainPage />} />
-              <Route path="/albums" element={<Albums />} />
-              <Route path="/posts" element={<Posts />} />
-            </Routes>
-          </Router>
-      </MainLayouts>
+    <BrowserRouter basename="/">
+      <Navigation />
+      <div className="box-border px-3 min-h-screen w-full bg-slate-100">
+        <Routes basename="/">
+          <Route path="/" element={<MainPage />}></Route>
+          <Route path="/albums" element={<Albums />}></Route>
+          <Route path="/posts" element={<Posts />}></Route>
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 };
 
