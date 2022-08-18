@@ -9,13 +9,12 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  BrowserRouter,
 } from "react-router-dom";
 import "./index.css"
 
+
 const App = () => {
   return (
-    <>
       <MainLayouts>
           <Router>
             <Routes>
@@ -25,7 +24,6 @@ const App = () => {
             </Routes>
           </Router>
       </MainLayouts>
-    </>
   );
 };
 

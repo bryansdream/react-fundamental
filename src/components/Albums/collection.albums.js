@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import Axios from "axios";
 import Carousel from "react-bootstrap/Carousel";
 import { ButtonGroup, Alert } from "react-bootstrap";
 import Loaders from "../Utilities/loaders";
 
 const Collection = () => {
   const [datas, setDatas] = useState([]);
-  const [limit, setLimit] = useState(3);
+  const [getLimit, setLimit] = useState(3);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let isCancelled = false;
     if (isCancelled === false) {
       setLoading(true);
-      axios({
+      Axios({
         method: "GET",
-        url: `${process.env.REACT_APP_BASEURL}/photos?_limit=${limit}`,
+        url: `${process.env.REACT_APP_BASEURL}/photos?_limit=${getLimit}`,
       })
         .then((result) => setDatas(result.data))
         .catch((err) => console.log(err))
@@ -26,7 +26,7 @@ const Collection = () => {
     return () => {
       isCancelled = true;
     };
-  }, [limit]);
+  }, [getLimit]);
 
   const handleLimit = (option) => {
     option === "+"
@@ -39,10 +39,9 @@ const Collection = () => {
   return (
     <React.Fragment>
       <Alert variant={"info"}>
-        Currently showing "{limit}" {limit > 1 && "photos"}{" "}
-        {limit === 1 && "photo"}
+        Currently showing "{getLimit}" {getLimit > 1 && "posts"}{" "}
+        {getLimit === 1 && "post"}
       </Alert>
-      <div className="d-flex flex-column  align-items-center">
       <Carousel>
         {/* mapping data start */}
         {datas.map((data, i) => {
@@ -63,20 +62,21 @@ const Collection = () => {
         })}
         {/* mapping data end */}
       </Carousel>
-      <div className="mt-2 mx-3">
+      <ButtonGroup className="d-flex justify-content-center align-items-center mt-2">
+        <div className="mt-2 mx-3">
           <button
             className="btn btn-primary me-2"
             onClick={() => handleLimit("+")}
           >
             +
           </button>
-          {limit > 1 && (
+          {getLimit > 1 && (
             <button className="btn btn-danger" onClick={() => handleLimit("-")}>
               -
             </button>
           )}
         </div>
-        </div>
+      </ButtonGroup>
     </React.Fragment>
   );
 };
